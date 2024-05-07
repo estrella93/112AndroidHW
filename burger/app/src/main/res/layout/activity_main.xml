@@ -14,7 +14,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="24dp"
         android:checked="false"
-        android:text="XXXXXX"
+        android:text="漢堡"
         android:textSize="25sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -28,7 +28,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="24dp"
         android:checked="false"
-        android:text="XXXXXXX"
+        android:text="薯條"
         android:textSize="25sp"
         app:layout_constraintLeft_toRightOf="@+id/image1"
         app:layout_constraintTop_toTopOf="parent"
@@ -43,7 +43,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="22dp"
         android:checked="false"
-        android:text="XXXXXXXX"
+        android:text="可樂"
         android:textSize="25sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/chk1"
@@ -57,7 +57,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="22dp"
         android:checked="false"
-        android:text="XXXXXXX"
+        android:text="玉米濃湯"
         android:textSize="25sp"
         app:layout_constraintLeft_toRightOf="@+id/image3"
         app:layout_constraintTop_toBottomOf="@+id/chk2"
@@ -145,43 +145,7 @@
         app:layout_constraintTop_toBottomOf="@+id/showOrder"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintTop_creator="1">
-        <RadioGroup
-            android:id="@+id/rgImages"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:orientation="horizontal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
 
-            <RadioButton
-                android:id="@+id/rdbBurger"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/rdbFrenchfry"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/rdbSoftdrink"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/rdbSoup"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="" />
-        </RadioGroup>
         <ImageView
             android:id="@+id/imgOutput1"
             android:layout_width="60dp"

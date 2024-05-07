@@ -3,45 +3,74 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
-import android.widget.RadioGroup;
+import android.widget.CheckBox;
 
 public class MainActivity extends AppCompatActivity {
-    private ImageView image1,image2,image3,image4;
+    private ImageView image1, image2, image3, image4;
+    private CheckBox chk1, chk2, chk3, chk4;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        image1=(ImageView) findViewById(R.id.imgOutput1);
-        image2=(ImageView) findViewById(R.id.imgOutput2);
-        image3=(ImageView) findViewById(R.id.imgOutput3);
-        image4=(ImageView) findViewById(R.id.imgOutput4);
-        RadioGroup rg =(RadioGroup) findViewById(R.id.rgImages);
+        image1 = findViewById(R.id.imgOutput1);
+        image2 = findViewById(R.id.imgOutput2);
+        image3 = findViewById(R.id.imgOutput3);
+        image4 = findViewById(R.id.imgOutput4);
 
-        rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        image1.setVisibility(ImageView.GONE);
+        image2.setVisibility(ImageView.GONE);
+        image3.setVisibility(ImageView.GONE);
+        image4.setVisibility(ImageView.GONE);
+
+        chk1 = findViewById(R.id.chk1);
+        chk2 = findViewById(R.id.chk2);
+        chk3 = findViewById(R.id.chk3);
+        chk4 = findViewById(R.id.chk4);
+
+        chk1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if(checkedId==R.id.rdbBurger){
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
                     image1.setVisibility(ImageView.VISIBLE);
-                    image2.setVisibility(ImageView.GONE);
-                    image3.setVisibility(ImageView.GONE);
-                    image4.setVisibility(ImageView.GONE);
-                }else if(checkedId==R.id.rdbFrenchfry){
+                } else {
                     image1.setVisibility(ImageView.GONE);
+                }
+            }
+        });
+
+        chk2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
                     image2.setVisibility(ImageView.VISIBLE);
-                    image3.setVisibility(ImageView.GONE);
-                    image4.setVisibility(ImageView.GONE);
-                }else if(checkedId==R.id.rdbSoftdrink){
-                    image1.setVisibility(ImageView.GONE);
+                } else {
                     image2.setVisibility(ImageView.GONE);
+                }
+            }
+        });
+
+        chk3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
                     image3.setVisibility(ImageView.VISIBLE);
-                    image4.setVisibility(ImageView.GONE);
-                }else if(checkedId==R.id.rdbSoup){
-                    image1.setVisibility(ImageView.GONE);
-                    image2.setVisibility(ImageView.GONE);
+                } else {
                     image3.setVisibility(ImageView.GONE);
+                }
+            }
+        });
+
+        chk4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
                     image4.setVisibility(ImageView.VISIBLE);
+                } else {
+                    image4.setVisibility(ImageView.GONE);
                 }
             }
         });
