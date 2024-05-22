@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">SPandLV</string>
+    <string-array name="item">
+        <item>主餐</item>
+        <item>附餐</item>
+        <item>飲料</item>
+    </string-array>
+    <string-array name="main">
+        <item>牛肉漢堡</item>
+        <item>豬肉漢堡</item>
+        <item>羊肉漢堡</item>
+        <item>雞肉漢堡</item>
+    </string-array>
+    <string-array name="side">
+        <item>薯條</item>
+        <item>沙拉</item>
+        <item>玉米濃湯</item>
+        <item>蘋果派</item>
+    </string-array>
+    <string-array name="drink">
+        <item>可樂</item>
+        <item>雪碧</item>
+        <item>冰紅茶</item>
+    </string-array>
 </resources>
