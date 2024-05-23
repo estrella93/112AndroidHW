@@ -57,15 +57,36 @@
         app:layout_constraintTop_toBottomOf="@+id/food" />
 
     <TextView
-        android:id="@+id/selectedFood"
-        android:layout_width="wrap_content"
+        android:id="@+id/selectedMain"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="主餐:請選擇
-        "
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="主餐:請選擇"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.636" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listview1"
+        app:layout_constraintVertical_bias="0.077"
+        app:layout_constraintBottom_toTopOf="@+id/selectedSide" />
+
+    <TextView
+        android:id="@+id/selectedSide"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="附餐:請選擇"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectedMain"
+        app:layout_constraintBottom_toTopOf="@+id/selectedDrink" />
+
+    <TextView
+        android:id="@+id/selectedDrink"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="飲料:請選擇"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectedSide"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

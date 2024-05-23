@@ -8,8 +8,8 @@
     <string-array name="main">
         <item>牛肉漢堡</item>
         <item>豬肉漢堡</item>
-        <item>羊肉漢堡</item>
-        <item>雞肉漢堡</item>
+        <item>炸機漢堡</item>
+        <item>炸魚漢堡</item>
     </string-array>
     <string-array name="side">
         <item>薯條</item>

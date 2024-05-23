@@ -15,12 +15,12 @@ public class MainActivity extends AppCompatActivity {
 
     private Spinner foodSpinner;
     private ListView listView1, listView2, listView3;
-    private TextView selectedFood;
+    private TextView selectedMain, selectedSide, selectedDrink;
     private ArrayAdapter<CharSequence> adapter;
 
-    private String selectedMain = "";
-    private String selectedSide = "";
-    private String selectedDrink = "";
+    private String selectedMainText = "";
+    private String selectedSideText = "";
+    private String selectedDrinkText = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,9 @@ public class MainActivity extends AppCompatActivity {
         listView1 = findViewById(R.id.listview1);
         listView2 = findViewById(R.id.listview2);
         listView3 = findViewById(R.id.listview3);
-        selectedFood = findViewById(R.id.selectedFood);
+        selectedMain = findViewById(R.id.selectedMain);
+        selectedSide = findViewById(R.id.selectedSide);
+        selectedDrink = findViewById(R.id.selectedDrink);
 
         // Initially hide listView2 and listView3
         listView2.setVisibility(View.GONE);
@@ -76,33 +78,43 @@ public class MainActivity extends AppCompatActivity {
         listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                selectedMain = parent.getItemAtPosition(position).toString();
-                updateSelectedFood();
+                selectedMainText = parent.getItemAtPosition(position).toString();
+                selectedMain.setText(selectedMainText);
+                updateSelectedMain();
             }
         });
 
         listView2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                selectedSide = parent.getItemAtPosition(position).toString();
-                updateSelectedFood();
+                selectedSideText =parent.getItemAtPosition(position).toString();
+                selectedSide.setText(selectedSideText);
+                updateSelectedSide();
             }
         });
 
         listView3.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                selectedDrink = parent.getItemAtPosition(position).toString();
-                updateSelectedFood();
+                selectedDrinkText = parent.getItemAtPosition(position).toString();
+                selectedDrink.setText(selectedDrinkText);
+                updateSelectedDrink();
             }
         });
     }
 
-    private void updateSelectedFood() {
-        String displayText = "主餐: " + (selectedMain.isEmpty() ? "請選擇" : selectedMain) + "\n" +
-                "附餐: " + (selectedSide.isEmpty() ? "請選擇" : selectedSide) + "\n" +
-                "飲料: " + (selectedDrink.isEmpty() ? "請選擇" : selectedDrink);
-        selectedFood.setText(displayText);
+    private void updateSelectedMain() {
+        String displayText = "主餐: " + (selectedMainText.isEmpty() ? "請選擇" : selectedMainText);
+        selectedMain.setText(displayText);
+    }
+    private void updateSelectedSide() {
+        String displayText = "附餐: " + (selectedSideText.isEmpty() ? "請選擇" : selectedSideText);
+        selectedSide.setText(displayText); // Change to selectedSide
+    }
+
+    private void updateSelectedDrink() {
+        String displayText = "飲料: " + (selectedDrinkText.isEmpty() ? "請選擇" : selectedDrinkText);
+        selectedDrink.setText(displayText); // Change to selectedDrink
     }
 
     @Override
