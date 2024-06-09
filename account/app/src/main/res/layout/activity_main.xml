@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/edtUsername"
+        android:layout_width="295dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="58dp"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/edtPassword"
+        android:layout_width="294dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edtUsername"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="57dp"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edtPassword"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="162dp"
+        android:layout_marginTop="66dp"
+        android:layout_marginEnd="162dp"
+        android:text="確定" />
+
+    <TextView
+        android:id="@+id/txvMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnLogin"
+        android:layout_marginTop="-95dp"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/txvaccount"
+        android:layout_width="53dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnLogin"
+        android:layout_marginTop="-198dp"
+        android:text="帳號:"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/txvpassword"
+        android:layout_width="57dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnLogin"
+        android:layout_marginTop="-148dp"
+        android:text="密碼:"
+        android:textSize="18sp" />
+</RelativeLayout>
