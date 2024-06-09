@@ -39,8 +39,8 @@
                 android:layout_weight="0.6"
                 android:ems="10"
                 android:gravity="right"
-                android:inputType="number"
-                android:text="175" />
+                android:inputType="text" /> <!-- 使用text設置 -->
+
         </LinearLayout>
 
         <LinearLayout
@@ -65,8 +65,7 @@
                 android:layout_weight="0.6"
                 android:ems="10"
                 android:gravity="right"
-                android:inputType="number"
-                android:text="65" />
+                android:inputType="text" /> <!-- 使用text設置 -->
         </LinearLayout>
 
         <LinearLayout
@@ -98,7 +97,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:gravity="center"
-            android:text="警語" />
+            android:text=""
+             /> <!-- 設置紅色文字顯示警語 -->
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

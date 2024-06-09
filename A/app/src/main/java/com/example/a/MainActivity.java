@@ -1,9 +1,9 @@
 package com.example.a;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.GridLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private OP op = OP.None;
     private State state = State.FirstNumberInput;
     private boolean decimalClicked = false;
+    private String currentInput = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,39 +41,49 @@ public class MainActivity extends AppCompatActivity {
             case "7":
             case "8":
             case "9":
-                if (decimalClicked) {
-                    theValue = theValue + Double.parseDouble(bstr) / Math.pow(10, edt.getText().length() - edt.getText().toString().indexOf(".") - 1);
-                } else {
-                    theValue = theValue * 10 + Integer.parseInt(bstr);
+                if (state == State.OperatorInputed) {
+                    edt.setText("");  // Clear display for new operand
+                    state = State.NumberInput;
+                    currentInput = "";
+                    decimalClicked = false; // Reset decimal for new input
                 }
-                edt.setText(String.valueOf(theValue));
+                currentInput += bstr;
+                theValue = Double.parseDouble(currentInput);
+                edt.setText(currentInput);
                 break;
             case ".":
                 if (!decimalClicked) {
                     decimalClicked = true;
-                    edt.append(bstr);
+                    if (currentInput.equals("")) {
+                        currentInput = "0.";
+                    } else {
+                        currentInput += ".";
+                    }
+                    edt.setText(currentInput);
                 }
                 break;
             case "Clear":
                 state = State.FirstNumberInput;
                 theValue = 0;
                 decimalClicked = false;
+                currentInput = "";
                 edt.setText("0");
                 op = OP.None;
                 operand2 = operand1 = 0;
                 break;
             case "Back":
-                String currentText = edt.getText().toString();
-                if (currentText.length() > 0) {
-                    char lastChar = currentText.charAt(currentText.length() - 1);
+                if (currentInput.length() > 0) {
+                    char lastChar = currentInput.charAt(currentInput.length() - 1);
                     if (lastChar == '.') {
                         decimalClicked = false;
                     }
-                    edt.setText(currentText.substring(0, currentText.length() - 1));
-                    if (currentText.length() == 1 || currentText.equals("-")) {
+                    currentInput = currentInput.substring(0, currentInput.length() - 1);
+                    if (currentInput.length() == 0 || currentInput.equals("-")) {
                         theValue = 0;
+                        edt.setText("0");
                     } else {
-                        theValue = Double.parseDouble(edt.getText().toString());
+                        theValue = Double.parseDouble(currentInput);
+                        edt.setText(currentInput);
                     }
                 }
                 break;
@@ -80,27 +91,28 @@ public class MainActivity extends AppCompatActivity {
             case "-":
             case "*":
             case "/":
-                switch (state) {
-                    case FirstNumberInput:
-                        operand1 = theValue;
-                        break;
-                    case OperatorInputed:
-                        operand1 = theValue;
-                        break;
-                    case NumberInput:
-                        operand2 = theValue;
-                        performOperation();
-                        break;
+                if (state == State.NumberInput || state == State.FirstNumberInput) {
+                    operand1 = theValue;
+                } else if (state == State.OperatorInputed) {
+                    operand2 = theValue;
+                    performOperation();
+                    operand1 = theValue;
                 }
                 op = getOperator(bstr); // Update operator
                 state = State.OperatorInputed;
+                theValue = 0; // Reset the value for the next operand
                 decimalClicked = false;
+                currentInput = "";
                 break;
             case "=":
-                if (state == State.NumberInput) {
+                if (state == State.NumberInput || state == State.OperatorInputed) {
                     operand2 = theValue;
                     performOperation();
                     edt.setText(String.valueOf(operand1));
+                    state = State.FirstNumberInput;
+                    theValue = operand1; // Keep the result for further calculations
+                    decimalClicked = false; // Reset decimal state
+                    currentInput = String.valueOf(operand1);
                 }
                 break;
         }
@@ -121,11 +133,13 @@ public class MainActivity extends AppCompatActivity {
                 if (operand2 != 0) {
                     operand1 /= operand2;
                 } else {
-                    // Handle division by zero error
+                    // Handle division by zero error, you can show a message to the user
+                    operand1 = 0;
                 }
                 break;
         }
         theValue = operand1;
+        op = OP.None; // Reset the operator after the operation
     }
 
     private OP getOperator(String buttonText) {
